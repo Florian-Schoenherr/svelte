@@ -59,17 +59,5 @@ export function getAllContexts<T extends Map<any, any> = Map<any, any>>(): T {
 }
 
 export function hasContext(key): boolean {
-	return get_current_component().$$.context.has(key);	
-}
-
-// TODO figure out if we still want to support
-// shorthand events, or if we want to implement
-// a real bubbling mechanism
-export function bubble(component, event) {
-	const callbacks = component.$$.callbacks[event.type];
-
-	if (callbacks) {
-		// @ts-ignore
-		callbacks.slice().forEach(fn => fn.call(this, event));
-	}
+	return get_current_component().$$.context.has(key);
 }
